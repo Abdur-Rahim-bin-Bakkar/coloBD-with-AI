@@ -99,6 +99,9 @@ export default function Navbar() {
                     </div>
                   </div>
                   <Dropdown.Menu onAction={handleMenuAction}>
+                    <Dropdown.Item id="/profile" textValue="Profile">
+                      <Label className="text-emerald-700">My Profile</Label>
+                    </Dropdown.Item>
                     <Dropdown.Item id="/dashboard" textValue="Dashboard">
                       <Label>My Dashboard</Label>
                     </Dropdown.Item>
@@ -126,13 +129,16 @@ export default function Navbar() {
             </>
           ) : (
             <>
-              <Button as={Link} href="/login" variant="ghost" size="sm">
+              <Button
+                variant="ghost"
+                size="sm"
+                onPress={() => router.push("/login")}
+              >
                 Sign In
               </Button>
               <Button
-                as={Link}
-                href="/signup"
                 size="sm"
+                onPress={() => router.push("/signup")}
                 className="bg-gradient-to-r from-emerald-500 to-emerald-700 font-semibold text-white shadow-md shadow-emerald-500/30"
               >
                 Get Started
@@ -187,11 +193,13 @@ export default function Navbar() {
             {user ? (
               <>
                 <Button
-                  as={Link}
-                  href="/dashboard"
                   variant="soft"
                   size="sm"
                   className="flex-1"
+                  onPress={() => {
+                    setMenuOpen(false);
+                    router.push("/dashboard");
+                  }}
                 >
                   Dashboard
                 </Button>
@@ -206,14 +214,24 @@ export default function Navbar() {
               </>
             ) : (
               <>
-                <Button as={Link} href="/login" variant="ghost" size="sm" className="flex-1">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="flex-1"
+                  onPress={() => {
+                    setMenuOpen(false);
+                    router.push("/login");
+                  }}
+                >
                   Sign In
                 </Button>
                 <Button
-                  as={Link}
-                  href="/signup"
                   size="sm"
                   className="flex-1 bg-gradient-to-r from-emerald-500 to-emerald-700 font-semibold text-white"
+                  onPress={() => {
+                    setMenuOpen(false);
+                    router.push("/signup");
+                  }}
                 >
                   Get Started
                 </Button>

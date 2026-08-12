@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Button } from "@heroui/react";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -30,17 +30,18 @@ export default function Home() {
               tour experiences, and book the perfect stay.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-emerald-500 to-emerald-700 font-semibold text-white shadow-lg shadow-emerald-500/30"
+              <Link
                 href="/places"
-                as="a"
+                className="inline-flex h-13 items-center justify-center rounded-full bg-gradient-to-r from-emerald-500 to-emerald-700 px-8 font-semibold text-white shadow-lg shadow-emerald-500/30 transition-all hover:shadow-xl hover:shadow-emerald-500/40 active:scale-[0.98]"
               >
                 Explore Places
-              </Button>
-              <Button size="lg" variant="bordered" href="/experiences" as="a">
+              </Link>
+              <Link
+                href="/experiences"
+                className="inline-flex h-13 items-center justify-center rounded-full border-2 border-emerald-600/60 bg-white/60 px-8 font-semibold text-emerald-800 transition-all hover:border-emerald-700 hover:bg-emerald-50 active:scale-[0.98]"
+              >
                 Read Experiences
-              </Button>
+              </Link>
             </div>
           </div>
 
