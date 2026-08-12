@@ -1,11 +1,13 @@
 import HeroBanner from "@/components/HeroBanner";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Faq from "@/components/Faq";
+import FeaturedPlaces from "@/components/places/FeaturedPlaces";
 
 export default function Home() {
   return (
     <div>
       <HeroBanner />
+      <FeaturedPlaces />
 
       <section className="border-b border-emerald-100 bg-white">
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 py-14 text-center sm:px-6 md:grid-cols-4 lg:px-8 sm:py-16">
