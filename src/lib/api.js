@@ -32,7 +32,14 @@ export const api = {
   del: (path) => request(path, { method: "DELETE" }),
 };
 
-export const fetchPlaces = () => api.get("/places");
+export const fetchPlaces = (params = {}) => {
+  const query = new URLSearchParams(
+    Object.fromEntries(Object.entries(params).filter(([, v]) => v))
+  ).toString();
+  return api.get(`/places${query ? `?${query}` : ""}`);
+};
+
+export const fetchPlace = (id) => api.get(`/places/${id}`);
 
 export const reactToPlace = (id, reaction) =>
   api.post(`/places/${id}/react`, { reaction });

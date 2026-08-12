@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   reactToPlace,
@@ -33,7 +34,7 @@ function timeAgo(iso) {
   });
 }
 
-function Comments({ placeId, user, onRequireAuth }) {
+export function Comments({ placeId, user, onRequireAuth, autoLoad = false }) {
   const [comments, setComments] = useState(null);
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
@@ -51,6 +52,13 @@ function Comments({ placeId, user, onRequireAuth }) {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (!autoLoad) return;
+    const timer = setTimeout(load, 0);
+    return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [autoLoad]);
 
   const submit = async (e) => {
     e.preventDefault();
@@ -242,7 +250,7 @@ export default function PlaceCard({ place, user, onRequireAuth, index = 0 }) {
       className="group relative flex flex-col overflow-hidden rounded-[1.75rem] border border-emerald-100 bg-white shadow-sm transition-all hover:-translate-y-1 hover:border-emerald-300 hover:shadow-xl hover:shadow-emerald-900/10"
     >
       <span className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-emerald-400 via-lime-400 to-teal-400 transition-transform duration-500 group-hover:scale-x-100" />
-      <div className="relative aspect-[16/10] overflow-hidden">
+      <Link href={`/places/${place._id}`} className="relative aspect-[16/10] block overflow-hidden">
         {place.image ? (
           <Image
             src={place.image}
@@ -265,12 +273,18 @@ export default function PlaceCard({ place, user, onRequireAuth, index = 0 }) {
             {place.place}
           </span>
         </div>
-      </div>
+        <span className="absolute bottom-3 right-3 inline-flex items-center gap-1 rounded-full bg-white/90 px-3 py-1 text-[11px] font-bold text-emerald-800 opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
+          View details
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" className="size-3"><path d="M5 12h14m-6-6 6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+        </span>
+      </Link>
 
       <div className="flex flex-1 flex-col p-5">
-        <h3 className="text-base font-extrabold leading-snug text-emerald-950 transition-colors group-hover:text-emerald-700">
-          {place.title}
-        </h3>
+        <Link href={`/places/${place._id}`}>
+          <h3 className="text-base font-extrabold leading-snug text-emerald-950 transition-colors group-hover:text-emerald-700">
+            {place.title}
+          </h3>
+        </Link>
         <p className="mt-1.5 line-clamp-2 text-sm leading-relaxed text-slate-600">
           {place.description || "A beautiful spot waiting to be explored in Bangladesh."}
         </p>
