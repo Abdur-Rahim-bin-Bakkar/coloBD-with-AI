@@ -8,7 +8,7 @@ export default function Home() {
       <HeroBanner />
 
       <section className="border-b border-emerald-100 bg-white">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 py-10 text-center sm:px-6 md:grid-cols-4 lg:px-8">
+        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 py-14 text-center sm:px-6 md:grid-cols-4 lg:px-8 sm:py-16">
           {[
             { value: "50+", label: "Tourist Places" },
             { value: "2K+", label: "Travel Experiences" },

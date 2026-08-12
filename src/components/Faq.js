@@ -44,7 +44,7 @@ export default function Faq() {
   );
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-white via-emerald-50/60 to-white py-20 lg:py-28">
+    <section className="relative overflow-hidden bg-gradient-to-b from-white via-emerald-50/60 to-white py-24 lg:py-36">
       <div className="pointer-events-none absolute -left-32 top-40 size-96 rounded-full bg-emerald-200/40 blur-3xl" />
       <div className="pointer-events-none absolute -right-24 bottom-16 size-80 rounded-full bg-teal-200/40 blur-3xl" />
 
