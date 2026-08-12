@@ -1,4 +1,5 @@
 import HeroBanner from "@/components/HeroBanner";
+import WhyChooseUs from "@/components/WhyChooseUs";
 
 export default function Home() {
   return (
@@ -20,6 +21,8 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      <WhyChooseUs />
     </div>
   );
 }
