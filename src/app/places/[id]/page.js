@@ -347,20 +347,18 @@ export default function PlaceDetailPage() {
                         type="button"
                         onClick={() => handleReact(r.key)}
                         title={`${r.label}${count ? ` (${count})` : ""}`}
-                        className={`group/react relative flex flex-col items-center gap-1.5 rounded-3xl border-2 px-3 py-5 text-sm font-bold transition-all duration-200 ${
-                          active
+                        className={`group/react relative flex flex-col items-center gap-1.5 rounded-3xl border-2 px-3 py-5 text-sm font-bold transition-all duration-200 ${active
                             ? "scale-[1.02] border-emerald-500 bg-gradient-to-b from-emerald-500 to-emerald-700 text-white shadow-lg shadow-emerald-500/30"
                             : "border-emerald-100 bg-emerald-50/60 text-slate-600 hover:-translate-y-1 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-900"
-                        } ${busy ? "pointer-events-none opacity-80" : ""}`}
+                          } ${busy ? "pointer-events-none opacity-80" : ""}`}
                       >
                         <span className={`text-3xl transition-transform duration-200 ${active ? "" : "group-hover/react:scale-125"}`}>
                           {r.emoji}
                         </span>
                         <span>{r.label}</span>
                         <span
-                          className={`rounded-full px-2 py-0.5 tabular-nums text-[11px] ${
-                            active ? "bg-white/20 text-white" : "bg-white text-emerald-700"
-                          }`}
+                          className={`rounded-full px-2 py-0.5 tabular-nums text-[11px] ${active ? "bg-white/20 text-white" : "bg-white text-emerald-700"
+                            }`}
                         >
                           {count}
                         </span>
